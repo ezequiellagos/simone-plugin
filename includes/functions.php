@@ -38,6 +38,23 @@ function scraper_get_new($id)
 	return $result;
 }
 
+// Eliminar Noticia
+function scraper_delete_new($id = 0)
+{
+	if ( $id != 0 AND !is_null($id)) {
+		global $wpdb;
+		$table_name = get_option( 'scraper_table' );
+		$result = $wpdb->query( "UPDATE {$table_name} SET show = 0 WHERE id = {$id} ;", ARRAY_A);
+		$result = $wpdb->update( $table_name, ['show' => '1'] );
+		if ($result === false) {
+			// Error
+		} else {
+			// Todo ok
+		}
+
+	}
+}
+
 // Función para AJAX
 function scraper_get_news()
 {
@@ -119,6 +136,7 @@ function scraper_get_news()
 }
 add_action( 'wp_ajax_nopriv_scraper_get_news', 'scraper_get_news' );
 add_action( 'wp_ajax_scraper_get_news', 'scraper_get_news' );
+add_action( 'wp_ajax_scraper_delete_new', 'scraper_delete_new' );
 
 
  ?>

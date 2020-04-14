@@ -28,6 +28,7 @@ function scraper_activar()
 			`img` varchar(500) DEFAULT NULL,
 			`body` text DEFAULT NULL,
 			`body_full` text DEFAULT NULL,
+			`show` tinyint(1) DEFAULT 1,
 			PRIMARY KEY (id)
 		) $charset_collate;";
 

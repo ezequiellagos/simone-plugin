@@ -160,6 +160,15 @@
 			}).then( (result) => {
 				if ( result.value ) {
 					// Agregar logica de eliminación de noticia
+
+					$.ajax({
+						method: "POST",
+						url: "<?= plugins_url('includes/', SCRAPER_MAIN_FILE) ?>",
+						data: { name: "John", location: "Boston" }
+					}).done(function( msg ) {
+						alert( "Data Saved: " + msg );
+					});
+					
 					Swal.fire(
 						'Deleted!',
 						'Your file has been deleted.',
