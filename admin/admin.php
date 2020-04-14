@@ -148,7 +148,7 @@
 
 			Swal.fire({
 				title: '¿Desea eliminar la noticia?',
-				icon: 'question',
+				icon: 'warning',
 				html:
 					'<strong>' + title + '</strong>',
 				showCloseButton: true,
@@ -170,8 +170,8 @@
 					});
 					
 					Swal.fire(
-						'Deleted!',
-						'Your file has been deleted.',
+						'Eliminada!',
+						'La noticia "' + title + '" ha sido eliminada',
 						'success'
 					)
 				}
@@ -186,15 +186,37 @@
 			var lead = table.row( row ).data()["lead"];
 			var url_new = table.row( row ).data()["url_new"];
 			var date = table.row( row ).data()["date"];
+			var category = table.row( row ).data()["category"];
+			var institution = table.row( row ).data()["institution"];
 
 			Swal.fire({
-				title: '<strong>' + title + '</strong>',
+				// title: title,
 				// icon: 'info',
+				width: '50rem',
 				html:
-					'Resumen: <br />'+
-					'<div class="table-responsive"><p class="">'+lead+'</p></div>'+
-					'<p><a href="'+url_new+'" target="_blank">'+url_new+'</a></p>'+
-					'<p>'+date+'</p>',
+					'<p>'+
+						'<table class="table table-sm">'+
+						
+							'<tr>'+
+								'<td><strong>Título: </strong></td>'+
+								'<td>' + title + '</td>'+
+							'</tr>'+
+
+							'<tr>'+
+								'<td><strong>Fecha de la noticia: </strong></td>'+
+								'<td>' + date + '</td>'+
+							'</tr>'+
+
+							'<tr>'+
+								'<td><strong>Fuente: </strong></td>'+
+								'<td><a href="' + url_new + '" target="_blank">Abrir</a></td>'+
+							'</tr>'+
+
+						'</table>'+
+					'</p>'+
+					'<p>'+
+						'<div class="table-responsive">'+lead+'</div>'+
+					'</p>',
 				showCloseButton: true,
 				// showCancelButton: true,
 				// focusConfirm: false,
